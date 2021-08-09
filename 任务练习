@@ -1,0 +1,79 @@
+基础
+	算法（啊哈算法😊/算法导论/ACM）
+	计算机导论
+	计算机系统
+	英语（程序员英语）
+	数学（程序员数学）
+网络
+	密码与网络安全
+	HTTP协议（http/压缩/链路/缓存/负载/集群/防火墙/Qos/网关/WEBRTC/Wireshark/Websocket）
+	web性能
+部署
+	Docker
+	Nginx
+	Webpack（Babel/code spliting/懒加载）
+	Git/GitLab/Fork
+	jenkins
+	ansible
+	k8s
+前端
+	ES6/TS（Lint/深入ES6/TS learning/Ecma262/淘宝前端FED/RxJS/axios/Service Worker/设计模式/重构第2版）
+	HTML/CSS（H5/CSS3/SASS/响应式布局/图标字体/图表/视频/动画/精通CSS 高级Web标准解决方案 第3版）
+	React（练习[❤️已购买视频]/Redux/SSR/React Native/Lazy/React源码）
+	Vue（练习/Vuex/Veex/Vue源码)
+	Angular(练习/angular/ionic4/Flutter/NgRx)
+	小程序（mpvue)
+	NodeJS/GraphQL/OpenAPI/ BFF层/
+	Serverless框架/微前端架构/前端 in IoT/前端 in mobile
+	WEB安全
+	自动化测试
+	组件库
+	Sentry日志
+	性能优化（react框架层/编译层/使用层按需加载）
+	jsdoc WebAssembly BinaryAST
+服务端
+	Java生态汇总 https://github.com/aalansehaiyang/technology-talk[❤️已购买视频]
+	基础（java/sprint/设计模式）
+	数据库（mysql/事务/分库分表/读写分离/调优）
+	容器（负载均衡/CDN）
+	中间件（RPC/MQ/分布式缓存/本地缓存/搜索/分布式数据框架、任务调度框架、协调服务、文件系统/配置管理/大数据）
+	系统架构
+	项目管理
+	运维
+高级挑战
+	python练习[❤️已购买视频]
+	人工智能导论
+	机器学习
+	智能家居
+	硬件基础
+
+项目练习：代办事项 (日常事项、记录、统计、分类、支持附件、快速搜索)、独立账户、邀请小伙伴使用
+	免费云部署
+	java+mysql+esearch+redis+nginx+docker
+	vue+mock+redux+router+docker
+	微信小程序
+	react native
+	vue veex
+
+克制自己
+认真看书
+要求阀值
+	国富论
+	《数学好的人是如何思考的》
+	《独立思考》
+	《育儿基本》
+寻找机遇
+
+
+任务练习
+	openshift免费云：提供部署空间《个人空间》 + 万网域名
+	wordpress博客系统需求 <mysql+php+localhost>
+	Reddit alexa medium wordpress Octopress + GitHub Pages
+	使用GitLab管理代码，Fork代码
+
+学会如何部署一个静态网站到服务器
+	注册一个域名(NameCheap, Google Domains)
+	管理共享主机或虚拟机(Inmotion, Hostgator, Bluehost)
+	FTP, SFTP 文件上传(Filezilla, Cyberduck)
+	静态页面托管(Netlify, Github Pages)
+

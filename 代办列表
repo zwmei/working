@@ -1,0 +1,133 @@
+临时想问
+	wireshark
+	jsbridge
+	手机上观看知乎技术大号
+	https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/timeline-tool?hl=zh-cn
+	https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-tree-construction?hl=zh-cn
+	c4d
+	(0,void)
+	react fibber  lane ...
+	sourcetree
+
+
+重要紧急
+	T.Asset数据面板
+	antd 如何构成API文档
+
+
+紧急不重要
+
+
+重要不紧急
+	关注几个大号（知乎上的前端号、其他平台的号、大厂号）
+	3d世界排期（VR、AR、行业前景）[GIMP、Blender、UnReal、OpenShot、imagemagick]  
+	工程图表、文档能力、PRD、原型图、交互图
+	web能力提升，克服薄弱环节
+	系统能力提升（网络、编译、数据库设计、存储、CPU、GPU、NPU、协程）
+	SHA256 md5 字符编码 加密 数字认证 前端安全
+	konvajs fibricjs 对比
+	大端、小端字节
+	实战git rebase（git stash对比）
+	js设计模式--编程珠玑--HTTP协议(流媒体、WEBRTC，WEB安全，axios，mock)--软件工程（各种图（类图、状态图）、方法论）
+	工程化（软件工程、系统工程）
+	前端技术（http、框架、性能、研习大神代码、flutter开发）
+	MetaData webassembly+unity
+	实现自己的价值：从图像出发到智能家居
+	opencv, opengl opencl openal
+	cpu gpu fpga asic
+	架构的哲学
+	图形的思考
+	机器的运算
+	开发的哲学《效率，整洁，维护，实用，便捷，市场》
+	window CustomEvent dispatchEvent
+	多线程/postmessage/sharedarraybuffer/atomics
+	pwa dva
+	基础书籍阅读（100本）第一阶段10本（操作系统/编译原理/网络/数据库/微机原理/模拟电子/计算机体系结构/软件工程/计算机程序的构造和解释/编程珠玑）
+	node - koa - server , node是如何做到的，v8引擎是如何做到的
+	chrome开发工具栏操作
+	研究opencv
+	研究ffmpeg
+	AI x IOT
+	threejs 、 webgl 、 webvr 、 webAR 、 unity3d 、 webrtc
+	飞冰--微前端
+	熟悉IDP项目前后端工程
+	redux store如何将数据传输到每个组件
+	持续集成与自动化测试
+
+
+不重要不紧急
+
+
+开源库
+	1、对网页进行标注，然后发送给其他人预览，省去截图的步骤，可以开发插件支持
+	2、多人在线视频聊天，支持白板功能，支持共享桌面
+	3、旅游景点
+		eladmin(https://docs.auauz.net/#/)
+		日历展示
+		事件记录（图片，视频，定位，详情，分类）
+		地图展示
+		推荐周边
+		行程展示
+		费用计划
+		计划管理
+		爬取
+		爬取餐饮美食
+		微信小程序/vue桌面
+			redis基本操作 --
+			sql基本操作	
+			nginx基本操作 --
+			docker基本操作 --
+			java基础 -
+		景点信息
+
+
+前端技术知识
+	大型网站前端架构
+	js按需加载 lab.min.js
+	ajax缓存
+	动态加载模块
+	模块测试
+	webcomponent
+	CustomEvent Window.postMessageAPI
+	Progressive
+	HTML模板
+	影子DOM
+	微服务
+	各框架源码
+
+后端技术知识
+
+	负载均衡：
+	　　　　Nginx：高性能、高并发的web服务器；功能包括负载均衡、反向代理、静态内容缓存、访问控制；工作在应用层
+	　　　　LVS： Linux virtual server，基于集群技术和Linux操作系统实现一个高性能、高可用的服务器；工作在网络层
+	webserver：
+	　　　　Java：Tomcat，Apache，Jboss
+	　　　　Python：gunicorn、uwsgi、twisted、webpy、tornado
+	service：　　
+	　　　　SOA、微服务、spring boot，django
+	容器：
+	　　　　docker，kubernetes
+	cache：
+	　　　　memcache、redis等
+	协调中心：
+	　　　　zookeeper、etcd等
+	　　　　zookeeper使用了Paxos协议Paxos是强一致性，高可用的去中心化分布式。zookeeper的使用场景非常广泛，之后细讲
+	rpc框架：
+	　　　　grpc、dubbo、brpc
+	　　　　dubbo是阿里开源的Java语言开发的高性能RPC框架，在阿里系的诸多架构中，都使用了dubbo + spring boot
+	消息队列：
+	　　　　kafka、rabbitMQ、rocketMQ、QSP
+	　　　　消息队列的应用场景：异步处理、应用解耦、流量削锋和消息通讯
+	实时数据平台：
+	　　　　storm、akka
+	离线数据平台：
+	　　　　hadoop、spark
+	　　　　PS: apark、akka、kafka都是scala语言写的，看到这个语言还是很牛逼的
+	dbproxy：
+	　　　　cobar也是阿里开源的，在阿里系中使用也非常广泛，是关系型数据库的sharding + replica 代理
+	db：
+	　　　　mysql、oracle、MongoDB、HBase
+	搜索：
+	　　　　elasticsearch、solr
+	日志：
+	　　　　rsyslog、elk、flume

@@ -1,0 +1,257 @@
+server {
+    listen 443 default_server ssl;
+
+    ssl_certificate   cert/214114725380798.pem;
+    ssl_certificate_key  cert/214114725380798.key;
+    ssl_session_timeout 5m;
+    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_prefer_server_ciphers on;
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains;preload" always;
+
+    server_name vms.tezign.com vms-env6.tezign.com vms-cdn.tezign.com;
+    root   /data/www.tezign.com/;
+    index  index.php index.html index.htm;
+    #charset koi8-r;
+    access_log  /data/log/nginx/vms.access.log  main;
+
+    error_page  404 = http://$host;
+
+    location / {
+      index index.html index.htm;
+    }
+
+    location ~ ^/$ {
+        rewrite ^ /user/ permanent;
+    }
+     #m 站
+    location ~ /m/ {
+        try_files $uri /m/m-platform/index.html;
+    }
+    # 供应商系统
+    location ~ /designer/ {
+        proxy_pass http://istio_ingressgateway;
+        proxy_redirect default;
+        proxy_set_header Host $host;
+        proxy_http_version 1.1;
+    }
+
+    # 用户中心
+    location ~ /user/ {
+        try_files $uri /newuser/index.html;
+    }
+    location ~ /homepage {
+        location ~ /assets {
+            rewrite ^/homepage/assets/(.*)$ /enterprise-home-page/assets/$1 last;
+        }
+        try_files $uri /enterprise-home-page/index.html;
+    }
+
+
+    #短链接
+    location /s/ {
+       #proxy_pass http://10.80.82.189:30678/general/public/shortlink/get/;
+       proxy_pass http://istio_ingressgateway/general/public/shortlink/get/;
+       #proxy_pass http://api_gateway_prod/general/public/shortlink/get/;
+       proxy_set_header Host $host;
+       proxy_set_header Referer https://$host;
+       proxy_http_version 1.1;
+    }
+
+    # 企业系统
+    location ~ /pro/ {
+        proxy_pass http://istio_ingressgateway;
+        proxy_redirect default;
+        proxy_set_header Host $host;
+        proxy_http_version 1.1;
+    }
+
+
+
+
+
+    # h5创意
+    #location ~ /gentool/ {
+        #proxy_pass http://istio_ingressgateway;
+        #proxy_redirect default;
+        #proxy_set_header Host $host;
+        #proxy_http_version 1.1;
+    #}
+
+
+
+    # 平台
+    #location ~ /platform {
+#       try_files $uri /enterprise-platform/index.html;
+ #   }
+
+
+     location ~ /project/ {
+        try_files $uri /project/index.html;
+    }
+
+    location ~ /supplier-innovation/ {
+        try_files $uri /supplier-innovation/index.html;
+    }
+
+    location ~ /designer-digital/asset-list {
+        try_files $uri /designer-digital/index.html;
+    }
+    location ~ /designer-portfolio {
+        try_files $uri /designer-portfolio/index.html;
+    }
+
+    location ~ /product-client/ {
+        try_files $uri /product-add/index.html;
+    }
+
+    # 新素材库客户端
+    location ~ /dam_enterprise {
+        location ~ /static {
+            rewrite ^/dam_enterprise/static/(.*)$ /dam/enterprise/static/$1 last;
+        }
+        try_files $uri /dam/enterprise/index.html;
+    }
+    # 新素材库供应商端
+    location ~ /dam_vendor {
+        location ~/static {
+            rewrite ^/dam_vendor/static/(.*)$ /dam/vendor/static/$1 last;
+        }
+        try_files $uri /dam/vendor/index.html;
+    }
+
+
+
+    # 产品库
+    #location ~ /product_enterprise {
+    #    location ~ /static {
+    #        rewrite ^/product_enterprise/static/(.*)$ /product/enterprise/static/$1 last;
+    #    }
+    #    try_files $uri /product/enterprise/index.html;
+    #}
+
+    location ^~ /product_enterprise/platform {
+        if ( $http_user_agent ~ "(MIDP)|(WAP)|(UP.Browser)|(Smartphone)|(Obigo)|(Mobile)|(AU.Brow    ser)|(wxd.Mms)|(WxdB.Browser)|(CLDC)|(UP.Link)|(KM.Browser)|(UCWEB)|(SEMC\-Browser)|(Mini)|(Symbi    an)|(Palm)|(Nokia)|(Panasonic)|(MOT\-)|(SonyEricsson)|(NEC\-)|(Alcatel)|(Ericsson)|(BENQ)|(BenQ)|    (Amoisonic)|(Amoi\-)|(Capitel)|(PHILIPS)|(SAMSUNG)|(Lenovo)|(Mitsu)|(Motorola)|(SHARP)|(WAPPER)|(    LG\-)|(LG/)|(EG900)|(CECT)|(Compal)|(kejian)|(Bird)|(BIRD)|(G900/V1.0)|(Arima)|(CTL)|(TDG)|(Daxia    n)|(DAXIAN)|(DBTEL)|(Eastcom)|(EASTCOM)|(PANTECH)|(Dopod)|(Haier)|(HAIER)|(KONKA)|(KEJIAN)|(LENOV    O)|(Soutec)|(SOUTEC)|(SAGEM)|(SEC\-)|(SED\-)|(EMOL\-)|(INNO55)|(ZTE)|(iPhone)|(Android)|(Windows     CE)|(Wget)|(Java)|(curl)|(Opera)" )
+        {
+            rewrite ^/product_enterprise/(.*)$  /h5_product_enterprise/$1 redirect;
+        }
+        try_files $uri /product/enterprise/index.html;
+    }
+
+    location ~ /product_enterprise/ {
+        location ~ /static {
+                rewrite ^/product_enterprise/static/(.*)$  /product/enterprise/static/$1 last;
+        }
+        try_files $uri /product/enterprise/index.html;
+    }
+
+    location ^~ /h5_product_enterprise/platform {
+        if ( $http_user_agent !~ "(MIDP)|(WAP)|(UP.Browser)|(Smartphone)|(Obigo)|(Mobile)|(AU.Bro    wser)|(wxd.Mms)|(WxdB.Browser)|(CLDC)|(UP.Link)|(KM.Browser)|(UCWEB)|(SEMC\-Browser)|(Mini)|(Symb    ian)|(Palm)|(Nokia)|(Panasonic)|(MOT\-)|(SonyEricsson)|(NEC\-)|(Alcatel)|(Ericsson)|(BENQ)|(BenQ)    |(Amoisonic)|(Amoi\-)|(Capitel)|(PHILIPS)|(SAMSUNG)|(Lenovo)|(Mitsu)|(Motorola)|(SHARP)|(WAPPER)|    (LG\-)|(LG/)|(EG900)|(CECT)|(Compal)|(kejian)|(Bird)|(BIRD)|(G900/V1.0)|(Arima)|(CTL)|(TDG)|(Daxi    an)|(DAXIAN)|(DBTEL)|(Eastcom)|(EASTCOM)|(PANTECH)|(Dopod)|(Haier)|(HAIER)|(KONKA)|(KEJIAN)|(LENO    VO)|(Soutec)|(SOUTEC)|(SAGEM)|(SEC\-)|(SED\-)|(EMOL\-)|(INNO55)|(ZTE)|(iPhone)|(Android)|(Windows     CE)|(Wget)|(Java)|(curl)|(Opera)" )
+        {
+                rewrite ^/h5_product_enterprise/(.*)$  /product_enterprise/$1 redirect;
+        }
+        try_files $uri /product/h5/index.html;
+    }
+
+    location ~ /h5_product_enterprise/ {
+        location ~ /static {
+                rewrite ^/h5_product_enterprise/static/(.*)$ /product/h5/static/$1 last;
+        }
+        try_files $uri /product/h5/index.html;
+    }
+
+
+    location ~ /content {
+        location ~ /static {
+            rewrite ^/content/static/(.*)$ /product/content/static/$1 last;
+        }
+        try_files $uri /product/content/index.html;
+    }
+
+    #location ~ "\/(ai)|(publish-forecast)|(detection)|(advertising)|(promotion)|(video)|(cdmp)" {
+    location ~ "^\/(ai|publish-forecast|detection|advertising|promotion|video|cdmp|mini-app)" {
+        try_files $uri /ai/index.html;
+    }
+
+    location = /assets/material/list {
+        rewrite / /dam_enterprise/approved_list permanent;
+    }
+
+    #location ~ /assets/ {
+    #    try_files $uri /assets/index.html;
+    #}
+
+    #location ~ /base/ {
+    #    try_files $uri /base/index.html;
+    #}
+
+    location ~ ^/(base|assets|gentool|platform|project|analytics|product|product-client|star|full-marketing|innovation-project|dam_enterprise|product_enterprise|pro)/ {
+        try_files $uri /main_app/index.html;
+        add_header Cache-Control no-cache;
+    }
+
+    location ^~ /micro/gentool {
+       proxy_pass http://istio_ingressgateway;
+        proxy_redirect default;
+        proxy_set_header Host $host;
+        proxy_http_version 1.1;
+    }
+
+
+
+    location ^~ /micro/platform {
+        try_files $uri /enterprise-platform/index.html;
+        add_header Cache-Control no-cache;
+    }
+
+    location ~ ^/micro/(.*) {
+       try_files $uri /$1/index.html;
+       add_header Cache-Control no-cache;
+    }
+
+
+    location ~ /product/ {
+        try_files $uri /product/index.html;
+    }
+
+    location ~ /analytics {
+        try_files $uri /data-analysis/index.html;
+    }
+    location ~ /golden_flower {
+        try_files $uri /golden_flower/index.html;
+    }
+
+    location ~ /full-marketing {
+        try_files $uri /full-marketing/index.html;
+    }
+
+    location ~ /star {
+        try_files $uri /star/index.html;
+    }
+
+    location ~ /main_app {
+        try_files $uri /main_app/index.html;
+   }
+
+    #静态资源
+    location ~ /vendors/ {
+      expires 1y;
+      access_log off;
+      add_header Cache-Control "public";
+    }
+
+    location ~ .*\.(gif|jpg|png|css|js)(.*) {
+        expires 90d;
+    }
+
+    # redirect server error pages to the static page /50x.html
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+
+    location ~ /\.ht {
+        deny  all;
+    }
+
+}

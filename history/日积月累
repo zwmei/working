@@ -1,0 +1,26 @@
+
+
+pip install --no-cache-dir -r requirements.txt -i https://pypi.mirrors.ustc.edu.cn/simple/
+
+/Users/wayne/Library/Android/sdk/build-tools/25.0.2/zipalign
+nrm  npm管理
+sudo npm install --unsafe-perm
+git push leishiming HEAD:master
+git push leishiming leimaster
+
+tezign-react-ui 修改发布流程
+1、package.json修改version
+2、yarn run clean
+3、yarn run dist
+4、git commit
+5、git push
+6、npm publish
+
+/^[^Warn].*/
+/^(?!Warning).*/
+
+AppID(小程序ID)wxbebcfb656e750ccc
+AppSecret(小程序密钥)0ce560758d05c46ab2a77c2d2372d798
+
+
+ssh web@${nginx_host} -p 60022 "mkdir -p /data/${WEB_NAME}/main_app"
